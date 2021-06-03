@@ -10013,3 +10013,9 @@ h3 {
   border:none;
 }
 
+.col-md-8{
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 50px;
+}
+

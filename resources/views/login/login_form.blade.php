@@ -35,11 +35,10 @@
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit">ログイン</button>
-    </form>
 
-    <div>
-        <a href="{{ route('signup') }}">新規登録</a>
-    </div>
+        <br>
+        <a href="{{ route('signupFrom') }}">新規登録</a>
+    </form>
     
 </body>
 </html>
