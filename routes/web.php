@@ -23,21 +23,19 @@ Route::group(['middleware' => ['guest']], function(){
     //ログイン処理
     Route::post('/login', [AuthController::class, 'login'])->name('login');
 
-    //ユーザー新規登録画面
-    Route::get('signup', function(){
-        return view('signup.signup');
-    })->name('signup');
-    
-    //ユーザー新規登録
-    //Route::get('/signup', [AuthController::class, 'signup'])->name('signup');
+
+    //ユーザー登録画面
+    Route::get('/signupFrom', [AuthController::class, 'signupFrom'])->name('signupFrom');
+
+    //ユーザー登録処理
+    Route::post('/signup/signup', [AuthController::class, 'exeSignup'])->name('signup');
 });
+
 
 //ログイン後のユーザーの場合
 Route::group(['middleware' => ['auth']], function(){
     //ホーム画面
-    Route::get('home', function(){
-        return view('home');
-    })->name('home');
+    Route::get('user', [AuthController::class, 'userDetail'])->name('userDetail');
 
     //ログアウト
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
