@@ -1,10 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+
 use App\Http\Requests\LoginFormRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\SignupRequest;
+
 use App\Models\User;
 use Illuminate\Support\Str;
 
@@ -75,9 +79,11 @@ class AuthController extends Controller
      * 
      * @return view
      */
-    public function exeSignup(Request $request)
+    public function exeSignup(SignupRequest $request)
     {
         $inputs = $request->all();
+        
+        $inputs['password'] = Hash::make($inputs['password']);
 
         //dd($inputs);
 
@@ -85,7 +91,7 @@ class AuthController extends Controller
         \DB::beginTransaction();
         try{
             //ユーザー情報を登録
-            Auth::create($inputs);
+            User::create($inputs);
             \DB::commit();
         }catch(\Throwable $e){
             \DB::rollback();

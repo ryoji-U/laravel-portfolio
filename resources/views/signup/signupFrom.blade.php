@@ -24,6 +24,7 @@
                         class="form-control"
                         value="{{ old('name') }}"
                         type="text"
+                        required
                     >
                     @if ($errors->has('name'))
                         <div class="text-danger">
@@ -41,6 +42,7 @@
                         class="form-control"
                         value="{{ old('email') }}"
                         type="email"
+                        required
                     >
                     @if ($errors->has('email'))
                         <div class="text-danger">
@@ -49,36 +51,39 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    <label for="email-validation">
-                        メールアドレス（確認用）
+                    <label for="inputPassword">
+                        パスワード
                     </label>
                     <input
-                        id="email-validation"
-                        name="email-validation"
+                        id="password"
+                        name="password"
                         class="form-control"
-                        value="{{ old('email-validation') }}"
-                        type="email"
+                        value="{{ old('password') }}"
+                        rows="4"
+                        type="password"
+                        required
                     >
-                    @if ($errors->has('email-validation'))
+                    @if ($errors->has('password'))
                         <div class="text-danger">
-                            {{ $errors->first('email-validation') }}
+                            {{ $errors->first('password') }}
                         </div>
                     @endif
                 </div>
                 <div class="form-group">
-                    <label for="password">
-                        パスワード
+                    <label for="inputPassword">
+                        パスワード（確認用）
                     </label>
-                    <textarea
-                        id="password"
-                        name="password"
+                    <input
+                        id="password-validation"
+                        name="password-validation"
                         class="form-control"
-                        rows="4"
+                        value="{{ old('password-validation') }}"
                         type="password"
-                    >{{ old('password') }}</textarea>
-                    @if ($errors->has('password'))
+                        required
+                    >
+                    @if ($errors->has('password-validation'))
                         <div class="text-danger">
-                            {{ $errors->first('password') }}
+                            {{ $errors->first('password-validation') }}
                         </div>
                     @endif
                 </div>
