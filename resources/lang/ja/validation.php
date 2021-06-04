@@ -147,8 +147,10 @@ return [
     */
 
     'attributes' => [
+        'name' => '氏名',
         'email' => 'メールアドレス',
         'password' => 'パスワード',
+        'password-validation' => 'パスワード（確認用）',
     ],
 
 ];
