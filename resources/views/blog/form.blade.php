@@ -6,6 +6,7 @@
         <h2>ブログ投稿フォーム</h2>
         <form method="POST" action="{{ route('store') }}" onSubmit="return checkSubmit()">
             @csrf
+            <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
             <div class="form-group">
                 <label for="title">
                     タイトル
