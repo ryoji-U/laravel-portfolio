@@ -23,6 +23,7 @@ class BlogFactory extends Factory
     {
         return [
             'title' => $this->faker->word,
+            'user_id' => $this->faker->numberBetween(1,5),
             'content' => $this->faker->realText
         ];
     }

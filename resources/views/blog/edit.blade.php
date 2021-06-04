@@ -1,3 +1,8 @@
+<?php if(Auth::user()->id != $blog->user_id){
+    echo '不正アクセスの可能性があります。<br>';
+    echo '<a class="btn btn-secondary" href="/blog">戻る</a>';
+    return redirect()->route('blogs');
+};?>
 @extends('layout')
 @section('title', 'ブログ編集')
 @section('content')

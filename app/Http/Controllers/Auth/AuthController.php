@@ -99,7 +99,6 @@ class AuthController extends Controller
             abort(500);
         }
 
-        \Session::flash('err_msg', 'ユーザー情報を登録しました。');
         return redirect(route('blogs'));
     }
 
