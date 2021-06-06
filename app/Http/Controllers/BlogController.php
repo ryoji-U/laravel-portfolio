@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Http\Requests\BlogRequest;
 
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
 class BlogController extends Controller
 {
     /**
@@ -15,10 +18,11 @@ class BlogController extends Controller
      */
     public function showList(){
         $blogs = Blog::all();
+        $user = User::all();
 
         //dd($blogs);
 
-        return view('blog.list', ['blogs' => $blogs]);
+        return view('blog.list', ['blogs' => $blogs, 'user' => $user]);
     }
     
     /**
@@ -28,13 +32,14 @@ class BlogController extends Controller
      */
     public function showDetail($id){
         $blog = Blog::find($id);
+        $user = User::all();
 
         if(is_null($blog)){
             \Session::flash('err_msg', 'データがありません。');
             return redirect(route('blogs'));
         }
 
-        return view('blog.detail', ['blog' => $blog]);
+        return view('blog.detail', ['blog' => $blog, 'user' => $user]);
     }
     
     /**
@@ -78,6 +83,11 @@ class BlogController extends Controller
      */
     public function showEdit($id){
         $blog = Blog::find($id);
+
+        if(Auth::user()->id != $blog->user_id){
+            \Session::flash('err_msg', '不正アクセスの可能性があります。');
+            return redirect(route('blogs'));
+        }
 
         if(is_null($blog)){
             \Session::flash('err_msg', 'データがありません。');
@@ -124,6 +134,12 @@ class BlogController extends Controller
      * @return view
      */
     public function exeDelete($id){
+        $blog = Blog::find($id);
+
+        if(Auth::user()->id != $blog->user_id){
+            \Session::flash('err_msg', '不正アクセスの可能性があります。');
+            return redirect(route('blogs'));
+        }
 
         if(empty($id)){
             \Session::flash('err_msg', 'データがありません。');

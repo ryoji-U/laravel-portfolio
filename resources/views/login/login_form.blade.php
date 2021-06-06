@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ログインフォーム</title>
+    <title>ログイン</title>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/signin.css') }}">
@@ -12,7 +12,7 @@
 <body>
     <form class="form-signin" method="POST" action="{{ route('login') }}">
         @csrf
-        <h1 class="h3 mb-3 font-weight-normal">ログインフォーム</h1>
+        <h1 class="h3 mb-3 font-weight-normal">ログイン</h1>
         
         @if ($errors->any())
             <div class="alert alert-danger">

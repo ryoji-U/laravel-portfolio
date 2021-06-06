@@ -9,29 +9,28 @@
         @endif
         <table class="table table-striped">
             <tr>
-                <th>記事番号</th>
+                <th>投稿者</th>
                 <th>タイトル</th>
                 <th>日付</th>
                 <th></th>
                 <th></th>
             </tr>
             @foreach($blogs as $blog)
-            <tr>
-                <td>{{ $blog->id }}</td>
+                <td>{{ $user[$blog->user_id-1]->name }}</td>
                 <td><a href="./blog/{{ $blog->id }}">{{ $blog->title }}</a></td>
                 <td>{{ $blog->updated_at }}</td>
 
-                <?php if(Auth::user()->id == $blog->user_id):?>
+                @if(Auth::user()->id == $blog->user_id)
                     <td><button type="button" class="btn-primary" onclick="location.href='./blog/edit/{{ $blog->id }}'">編集</button></td>
 
                     <form method="POST" action="{{ route('delete', $blog->id) }}" onSubmit="return checkDelete()">
                         @csrf
                         <td><button type="submit" class="btn-primary" onclick=>削除</button></td>
                     </form>
-                <?php else:?>
+                @else
                    <td></td>
                    <td></td>
-                <?php endif;?>
+                @endif
 
             </tr>
             @endforeach

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Requests\LoginFormRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\SignupRequest;
+use App\Http\Requests\LoginFormRequest;
 
 use App\Models\User;
 use Illuminate\Support\Str;
@@ -101,6 +101,5 @@ class AuthController extends Controller
 
         return redirect(route('blogs'));
     }
-
     
 }

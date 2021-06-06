@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'ユーザー情報')
+@section('title', 'ユーザー')
 @section('content')
     <div class="container">
         <div class="mt-5">
