@@ -42,7 +42,6 @@ Route::group(['middleware' => ['auth']], function(){
 
 
     //ブログ一覧画面を表示
-    //Route::get('/', 'BlogController@showList')->name('blogs');
     Route::get('/blog', [BlogController::class, 'showList'])->name('blogs');
 
     //ブログ登録画面を表示

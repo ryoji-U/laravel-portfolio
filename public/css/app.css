@@ -10002,7 +10002,7 @@ h3 {
   }
 }
 
-/*210603追記*/
+/*2106追記*/
 .header-form{
   padding-top:7px;
 }
@@ -10017,5 +10017,9 @@ h3 {
   margin-right: auto;
   margin-left: auto;
   margin-top: 50px;
+}
+
+p{
+  word-break: break-all;
 }
 
