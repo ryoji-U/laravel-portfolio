@@ -84,13 +84,13 @@ class BlogController extends Controller
     public function showEdit($id){
         $blog = Blog::find($id);
 
-        if(Auth::user()->id != $blog->user_id){
-            \Session::flash('err_msg', '不正アクセスの可能性があります。');
+        if(is_null($blog)){
+            \Session::flash('err_msg', 'データがありません。');
             return redirect(route('blogs'));
         }
 
-        if(is_null($blog)){
-            \Session::flash('err_msg', 'データがありません。');
+        if(Auth::user()->id != $blog->user_id){
+            \Session::flash('err_msg', '不正アクセスの可能性があります。');
             return redirect(route('blogs'));
         }
 
@@ -136,13 +136,13 @@ class BlogController extends Controller
     public function exeDelete($id){
         $blog = Blog::find($id);
 
-        if(Auth::user()->id != $blog->user_id){
-            \Session::flash('err_msg', '不正アクセスの可能性があります。');
+        if(empty($id)){
+            \Session::flash('err_msg', 'データがありません。');
             return redirect(route('blogs'));
         }
 
-        if(empty($id)){
-            \Session::flash('err_msg', 'データがありません。');
+        if(Auth::user()->id != $blog->user_id){
+            \Session::flash('err_msg', '不正アクセスの可能性があります。');
             return redirect(route('blogs'));
         }
 
