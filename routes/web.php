@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\controllers\Auth\AuthController;
-use App\Http\controllers\BlogController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
